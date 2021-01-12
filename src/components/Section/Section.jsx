@@ -1,13 +1,19 @@
 import React from 'react';
 import style from './Layot.module.css';
+import PropTypes from 'prop-types';
 
 const Section = ({ children, title }) => {
     return (
-        <Section className={style.container}>
+        <section className={style.container}>
             {title && <h2>{title}</h2>}
             {children}
-        </Section>
+        </section>
     );
 };
 
 export default Section;
+
+Section.propTypes = {
+    children: PropTypes.node.isRequired,
+    title: PropTypes.string,
+};

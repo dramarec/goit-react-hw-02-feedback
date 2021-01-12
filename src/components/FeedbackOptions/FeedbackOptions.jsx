@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FeedbackOptions = ({ options, onChange }) => {
     return options.map(option => (
@@ -9,3 +10,7 @@ const FeedbackOptions = ({ options, onChange }) => {
 };
 
 export default FeedbackOptions;
+FeedbackOptions.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string.isRequired),
+    onChange: PropTypes.func.isRequired,
+};

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
+import Notification from './Notification/Notification';
 import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
 
@@ -9,7 +10,6 @@ export default class App extends Component {
         neutral: 0,
         bad: 0,
     };
-
     updateProp = event => {
         const { name } = event.target;
         this.setState(state => ({
@@ -26,7 +26,7 @@ export default class App extends Component {
     };
 
     render() {
-        const { good, neutral, bad } = this.state;
+        // const { good, neutral, bad } = this.state;
         return (
             <>
                 <Section>
@@ -39,15 +39,18 @@ export default class App extends Component {
                     />
                 </Section>
                 <Section title="Statistic">
-                    <Statistics
-                        good={good}
-                        neutral={neutral}
-                        bad={bad}
-                        total={this.countTotalFeedback}
-                        positivePercentage={
-                            this.countPositiveFeedbackPercentage
-                        }
-                    />
+                    {this.countTotalFeedback() ? (
+                        <Statistics
+                            // good={good}
+                            // neutral={neutral}
+                            // bad={bad}
+                            {...this.state}
+                            total={this.countTotalFeedback()}
+                            positivePercentage={this.countPositiveFeedbackPercentage().toFixed()}
+                        />
+                    ) : (
+                        <Notification message="No feedback given" />
+                    )}
                 </Section>
             </>
         );

@@ -10,8 +10,8 @@ export default class App extends Component {
         neutral: 0,
         bad: 0,
     };
-    updateProp = event => {
-        const { name } = event.target;
+    updateProp = e => {
+        const { name } = e.target;
         this.setState(state => ({
             [name]: state[name] + 1,
         }));
@@ -32,18 +32,19 @@ export default class App extends Component {
                 <Section>
                     <h1>Home Work #2 Feedback</h1>
                 </Section>
+
                 <Section title="Please leave feedback">
                     <FeedbackOptions
+                        // options={this.state}
+                        // options={(good, neutral, bad)}
                         options={Object.keys(this.state)}
                         onChange={this.updateProp}
                     />
                 </Section>
+
                 <Section title="Statistic">
                     {this.countTotalFeedback() ? (
                         <Statistics
-                            // good={good}
-                            // neutral={neutral}
-                            // bad={bad}
                             {...this.state}
                             total={this.countTotalFeedback()}
                             positivePercentage={this.countPositiveFeedbackPercentage().toFixed()}

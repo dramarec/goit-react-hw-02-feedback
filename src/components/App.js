@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Buttons from './buttons/Buttons';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Notification from './Notification/Notification';
+import Number from './number/Number';
 import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
 
@@ -30,10 +32,12 @@ export default class App extends Component {
         return (
             <>
                 <Section>
-                    <h1>Home Work #2 Feedback</h1>
+                    <h1>Practice#6 Feedback_Redux</h1>
                 </Section>
+                <Number />
 
                 <Section title="Please leave feedback">
+                    <Buttons />
                     <FeedbackOptions
                         // options={this.state}
                         // options={(good, neutral, bad)}
